@@ -1,32 +1,30 @@
 import React from "react";
 
-export default function RadioButton () {
+export default function RadioButton ({obj2}) {
+    
     const check = () => {
-        let checkBox = document.getElementById("all");
-        let text = document.getElementById("new1");
-        if (checkBox.checked === true){
-            text.style.display = "block";
-        } else {
-            text.style.display = "none";
-        }
+        let text = document.getElementById("0")
+        let text1 = document.getElementById("1")
+        let text2 = document.getElementById("2")
+        text.style.display = "block";
+        text1.style.display = "none";
+        text2.style.display = "none";
     }
     const check1 = () => {
-        let checkBox = document.getElementById("no");
-        let text = document.getElementById("new2");
-        if (checkBox.checked === true){
-            text.style.display = "block";
-        } else {
-            text.style.display = "none";
-        }
+        let text = document.getElementById("1")
+        let text1 = document.getElementById("0")
+        let text2 = document.getElementById("2");
+        text.style.display = "block";
+        text1.style.display = "none";
+        text2.style.display = "none";
     }
     const check2 = () => {
-        let checkBox = document.getElementById("yes");
-        let text = document.getElementById("new3");
-        if (checkBox.checked === true){
+            let text = document.getElementById("2");
+            let text1 = document.getElementById("0");
+            let text2 = document.getElementById("1");
             text.style.display = "block";
-        } else {
-            text.style.display = "none";
-        }
+            text1.style.display = "none";
+            text2.style.display = "none";
     }
     return (
         <div>
@@ -37,9 +35,10 @@ export default function RadioButton () {
         <label>No</label>
         <input type="radio" id="yes" name="rad" onClick={check2} />
         <label>Yes</label>
-        <p id="new1" style={{display:'none'}}>you have selected All having id 0 whose age is 22 years</p>
-        <p id="new2" style={{display:'none'}}>you have selected No having id 1 whose age is 25 years</p>
-        <p id="new3" style={{display:'none'}}>you have selected Yes having id 2 whose age is 28 years</p>
+        {obj2.map((item) => {
+            return <p id={item.id} key={item.id} style={{display:'none'}}>you have selected {item.name} having id {item.id} whose age is {item.age} years</p>
+        })}
+        
         </div>
     );
 }
